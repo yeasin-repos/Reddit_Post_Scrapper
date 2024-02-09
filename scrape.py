@@ -2,7 +2,7 @@ import praw
 import tkinter as tk
 from tkinter import ttk
 
-def get_new_posts(client_id, client_secret, username, password, subreddit_name):
+def get_new_posts(client_id, client_secret, username, subreddit_name):
     reddit = praw.Reddit(client_id=client_id,
                          client_secret=client_secret,
                          username=username,
@@ -30,12 +30,13 @@ def fetch_data():
 root = tk.Tk()
 root.title("Reddit Post Fetcher")
 root.configure(bg="#bb9cc0")
+root.geometry("500x400")
 
 # Client ID Entry
 client_id_label = ttk.Label(root, text="Client ID:", background="#bb9cc0")
-client_id_label.grid(row=0, column=0, padx=10, pady=5, sticky="w")
+client_id_label.grid(row=0, column=0, padx=10, pady=(20, 5), sticky="w")
 client_id_entry = ttk.Entry(root, width=50)
-client_id_entry.grid(row=0, column=1, padx=10, pady=5, sticky="ew")
+client_id_entry.grid(row=0, column=1, padx=10, pady=(20, 5), sticky="ew")
 
 # Client Secret Entry
 client_secret_label = ttk.Label(root, text="Client Secret:", background="#bb9cc0")
@@ -51,17 +52,17 @@ username_entry.grid(row=2, column=1, padx=10, pady=5, sticky="ew")
 
 # Subreddit Entry
 subreddit_label = ttk.Label(root, text="Subreddit:", background="#bb9cc0")
-subreddit_label.grid(row=4, column=0, padx=10, pady=5, sticky="w")
+subreddit_label.grid(row=3, column=0, padx=10, pady=5, sticky="w")
 subreddit_entry = ttk.Entry(root, width=50)
-subreddit_entry.grid(row=4, column=1, padx=10, pady=5, sticky="ew")
+subreddit_entry.grid(row=3, column=1, padx=10, pady=5, sticky="ew")
 
 # Fetch Data Button
 fetch_button = ttk.Button(root, text="Fetch Posts", command=fetch_data, style="Fetch.TButton")
-fetch_button.grid(row=5, column=0, columnspan=2, pady=10)
+fetch_button.grid(row=4, column=0, columnspan=2, pady=(20, 10))
 
 # Post List
 post_list = tk.Listbox(root, width=80, height=15, bg="#ffffff", fg="#000000")
-post_list.grid(row=6, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+post_list.grid(row=5, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
 
 # Configure style
 style = ttk.Style(root)
